@@ -1,0 +1,25 @@
+reset
+
+create surface rectangle width 1 height 1 zplane 
+create surface circle radius .25 zplane 
+
+subtract volume 2  from volume 1 
+
+mesh surface 3
+
+Sideset 1 curve 3  
+Sideset 2 curve 4  
+Sideset 3 curve 1  
+Sideset 4 curve 2  
+Sideset 5 curve 6  
+
+sideset 1 name 'bottom'
+sideset 2 name 'right'
+sideset 3 name 'top'
+sideset 4 name 'left'
+sideset 5 name 'inside'
+
+block 1 surface 3  
+block  element type quad4
+
+export Genesis  "/Users/gastdr/projects/ragusa_class/geom/2d_circle_hole.e" dimension 2  overwrite 

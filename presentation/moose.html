@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MOOSE Workshop</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style type="text/css">
+      @import url(http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(http://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+      @import url(http://fonts.googleapis.com/css?family=Raleway);
+      @import url(http://fonts.googleapis.com/css?family=Open+Sans);
+      @import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300);
+      @page{ size: 6.27in 4.75in; }
+
+      body { font-family: 'Open Sans'; }
+      h1, h2, h3 {
+        font-family: 'Open Sans Condensed', sans-serif;
+        font-weight: normal;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      .remark-code-line-highlighted { background: none; }
+   
+      .remark-code { font-size: 80%;  overflow-y: scroll;  overflow-x: scroll;  max-height: 400px; }
+
+      .left-50 { width: 49%;  float: left; }
+
+      .right-50 { width: 49%;  float: right; }
+
+      .cover { color: #ffffff;  padding-left: 250px; }
+
+      .tiny { font-size: 10px; }
+
+      .scriptsize { font-size: 15px;float }
+
+      .footnotesize { font-size: 18px; }
+
+      .small { font-size: 20px; }
+
+      .large { font-sisze: 30px; }
+
+      .font-16 { font-size: 16px; }
+
+      .left-75 { width: 74%;  float: left; }
+
+      .right-25 { width: 24%;  float: right; }
+
+      .left-66 { width: 66%;  float: left; }
+
+      .left-33 { width: 33%;  float: left; }
+
+      .center-33 { width: 33%;  float: left; }
+
+      .right-33 { width: 33%;  float: right; }
+
+      .right-66 { width: 66%;  float: right; }
+
+      .left-40 { width: 39%;  float: left; }
+
+      .right-60 { width: 59%;  float: right; }
+
+      .left-60 { width: 59%;  float: left; }
+
+      .right-40 { width: 39%;  float: right; }
+
+      table, th, td { padding: 10px;  border-spacing: 0px;  font-size: 95% }
+
+      table { width: 100%;  margin: 10px auto;  border-spacing: 0px;  border-bottom: 2px solid black;  border-top: 2px solid black; }
+
+      table.table-tight th, td { padding: 4px;  border-spacing: 0px;  font-size: 85% }
+
+      th { border-bottom: 1px solid black; }
+
+      .scroll { overflow-y: scroll;  height: 500 px;  max-height: 500px;  display: block; }
+
+      figure { display: block;  margin: auto;  padding: 0px;  border: 0px; }
+
+      ::-webkit-scrollbar-thumb { border-radius: 4px;  background-color: rgba(0,0,0,.5);  -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5); }
+
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+background-image:url(https://mooseframework.org/static/media/uploads/images/backgrounds/inl_dark_title.png)
+class:middle, cover
+name:cover-title
+# MOOSE Workshop
+
+---
+background-image:url(https://mooseframework.org/static/media/uploads/images/backgrounds/inl_white_slide.png)
+name:cover-contents-0
+# MOOSE Workshop Contents
+<p style="text-align:left;line-height:12px"><a href="#overview_cover-title">MOOSE Overview</a><span style="float:right;"><a href="#overview_cover-title">3</a></span></p>
+<p style="text-align:left;line-height:12px"><a href="#adapt-title">Mesh Adaptivity</a><span style="float:right;"><a href="#adapt-title">18</a></span></p>
+<p style="text-align:left;line-height:12px"><a href="#executioners-title">Executioners</a><span style="float:right;"><a href="#executioners-title">30</a></span></p>
+
+
+---
+
+background-image:url(https://mooseframework.org/static/media/uploads/images/backgrounds/inl_dark_title.png)
+class:middle, cover
+name:overview_cover-title
+# MOOSE Overview
+
+---
+background-image:url(https://mooseframework.org/static/media/uploads/images/backgrounds/inl_white_slide.png)
+name:overview_cover-contents-0
+# MOOSE Overview Contents
+<p style="line-height:12px;text-align:left;text-indent:0px;"><a href="#tweet-it!-0">Tweet It!</a><span style="float:right;"><a href="#tweet-it!-0">6</a></span></p>
+<p style="line-height:12px;text-align:left;text-indent:0px;"><a href="#moose:-multiphysics-object-oriented-simulation-environment-0">MOOSE: Multiphysics Object Oriented Simulation Environment</a><span style="float:right;"><a href="#moose:-multiphysics-object-oriented-simulation-environment-0">7</a></span></p>
+<p style="line-height:12px;text-align:left;text-indent:0px;"><a href="#capabilities-0">Capabilities</a><span style="float:right;"><a href="#capabilities-0">9</a></span></p>
+<p style="line-height:12px;text-align:left;text-indent:0px;"><a href="#code-platform-0">Code Platform</a><span style="float:right;"><a href="#code-platform-0">10</a></span></p>
+<p style="line-height:12px;text-align:left;text-indent:0px;"><a href="#rapid-development-0">Rapid Development</a><span style="float:right;"><a href="#rapid-development-0">11</a></span></p>
+<p style="line-height:12px;text-align:left;text-indent:0px;"><a href="#moose-application-architecture-0">MOOSE Application Architecture</a><span style="float:right;"><a href="#moose-application-architecture-0">12</a></span></p>
+<p style="line-height:12px;text-align:left;text-indent:0px;"><a href="#moose-code-example-0">MOOSE Code Example</a><span style="float:right;"><a href="#moose-code-example-0">13</a></span></p>
+<p style="line-height:12px;text-align:left;text-indent:0px;"><a href="#moose-software-quality-practices-0">MOOSE Software Quality Practices</a><span style="float:right;"><a href="#moose-software-quality-practices-0">14</a></span></p>
+<p style="line-height:12px;text-align:left;text-indent:0px;"><a href="#publications">MOOSE Publications</a><span style="float:right;"><a href="#publications">17</a></span></p>
+
+
+---
+
+background-image:url(https://mooseframework.org/static/media/uploads/images/backgrounds/inl_white_slide.png)
+name:moose-team-0
+  # MOOSE Team
+
+.left-50[
+
+* Derek Gaston
+    * [derek.gaston@inl.gov](mailto:derek.gaston@inl.gov)
+    * [@friedmud](https://twitter.com/friedmud)
+* Cody Permann
+    * [cody.permann@inl.gov](mailto:cody.permann@inl.gov)
+    * [@permcody](https://twitter.com/permcody)
+* David Andrš
+    * [david.andrs@inl.gov](mailto:david.andrs@inl.gov)
+    * [@andrsdave](https://twitter.com/andrsdave)
+* John Peterson
+    * [jw.peterson@inl.gov](mailto:jw.peterson@inl.gov)
+    * [@peterson512](https://twitter.com/peterson512)
+
+]
+
+.right-50[
+
+* Jason Miller
+    * [jason.miller@inl.gov](mailto:jason.miller@inl.gov)
+    * [@mjmiller96](https://twitter.com/mjmiller96)
+* Andrew Slaughter
+    * [andrew.slaughter@inl.gov](mailto:andrew.slaughter@inl.gov)
+    * [@aeslaughter98](https://twitter.com/aeslaughter98)
+* Brian Alger
+    * [brian.alger@inl.gov](mailto:brian.alger@inl.gov)
+* Fande Kong
+    * [fande.kong@inl.gov](mailto:fande.kong@inl.gov)
+* Robert Carlsen
+    * [Robert Carlsen](mailto:robert.carlsen@inl.gov)
+* Alex Lindsay
+    * [alexander.lindsay@inl.gov](mailto:alexander.lindsay@inl.gov)
+
+]
+
+---
+background-image:url(https://mooseframework.org/static/media/uploads/images/backgrounds/inl_white_slide.png)
+name:tweet-it!-0
+
+# Tweet It!
+
+ - \#mooseframework
+ - Tweets with that hashtag show up on the [mooseframework.org](http://www.mooseframework.org) website
+ - Post pictures or videos of your latest results!
+
+---
+background-image:url(https://mooseframework.org/static/media/uploads/images/backgrounds/inl_white_slide.png)
+name:moose:-multiphysics-object-oriented-simulation-environment-0
+
+# MOOSE: Multiphysics Object Oriented Simulation Environment
+
+.left-75[
+
+* A framework for solving computational engineering problems in a well-planned, managed, and coordinated way
+
+* **Designed to significantly reduce the expense and time required to develop new applications**
+    * *Maximize Science/$*
+    * *Designed to be easily extended and maintained*
+    * *Efficient on both a few and many processors*
+    * *Provides an object-oriented, pluggable system for defining all aspects of a simulation tool.*
+
+]
+
+.right-25[
+
+
+<div style="text-align:center;">
+<figure style="float:left">
+  <a href="http://www.mooseframework.org/static/media/wiki/images/229/857358dc37bfc669add42fddbb76e4ea/pellet-stack.png">
+    <img src="http://www.mooseframework.org/static/media/wiki/images/229/857358dc37bfc669add42fddbb76e4ea/pellet-stack.png" style="align:right;"/>
+  </a>
+</figure>
+</div>]
+
+---
+background-image:url(https://mooseframework.org/static/media/uploads/images/backgrounds/inl_white_slide.png)
+class:bottom
+name:moose
+
+
+<div style="text-align:center;">
+<figure style="float:left">
+  <a href="http://www.mooseframework.org/static/media/wiki/images/229/9629aa4947c9233de95d8a214180bdeb/moose.png">
+    <img src="http://www.mooseframework.org/static/media/wiki/images/229/9629aa4947c9233de95d8a214180bdeb/moose.png" style="align:right;width:700px;"/>
+  </a>
+</figure>
+</div>
+---
+background-image:url(https://mooseframework.org/static/media/uploads/images/backgrounds/inl_white_slide.png)
+name:capabilities-0
+
+# Capabilities
+
+* 1D, 2D and 3D
+    * User code agnostic of dimension
+* Finite Element Based
+    * Continuous and Discontinuous Galerkin (and Petrov Galerkin)
+* Fully Coupled, Fully Implicit
+* Unstructured Mesh
+    * All shapes (Quads, Tris, Hexes, Tets, Pyramids, Wedges, ...)
+    * Higher order geometry (curvilinear, etc.)
+    * Reads and writes multiple formats
+* Mesh Adaptivity
+* Parallel
+    * User code agnostic of parallelism
+* High Order
+    * User code agnostic of shape functions
+    * p-Adaptivity
+* Built-in Postprocessing
+* And much more ...
+
+---
+background-image:url(https://mooseframework.org/static/media/uploads/images/backgrounds/inl_white_slide.png)
+name:code-platform-0
+
+# Code Platform
+
+* Uses well-established libraries
+* Implements robust and state-of-the-art solution methods
+
+
+<div style="text-align:center;">
+<figure style="float:left">
+  <a href="http://www.mooseframework.org/static/media/wiki/images/229/b61cdbc1e8be71dae37adc31a688d209/moose-arch.png">
+    <img src="http://www.mooseframework.org/static/media/wiki/images/229/b61cdbc1e8be71dae37adc31a688d209/moose-arch.png" style="align:right;width:500px;"/>
+  </a>
+</figure>
+</div>
+---
+background-image:url(https://mooseframework.org/static/media/uploads/images/backgrounds/inl_white_slide.png)
+name:rapid-development-0
+
+# Rapid Development
+
+| **Application** | **Physics** | **Results** | **Lines** |
+| :- | :- | :-: | :-: |
+| BISON | Thermo-mechanics, Chemical, diffusion, coupled mesoscale | 4 mo. | 3,000 |
+| PRONGHORN | Neutronics, Porous flow, eigenvalue MARMOT 4th order phasefield mesoscale | 3 mo. | 7,000 |
+| MARMOT | 4-th order phase-field meso-scale | 1 mo. | 6,000 |
+| RAT | Porous ReActive Transport | 1 mo. | 1,500 |
+| FALCON | Geo-mechanics, coupled mesoscale | 3 mo. | 3,000
+| MAMBA | Chemical reactions, prescipitation, and porous flow | 5 wks. | 2,500 |
+| HYRAX | Phase-field, ZrH precipitation | 3 mo. | 1,000 |
+| PIKA | Multi-scale heat and mass transfer with phase-change | 3 mo. | 2,900 |
+
+---
+background-image:url(https://mooseframework.org/static/media/uploads/images/backgrounds/inl_white_slide.png)
+class:bottom
+name:moose-application-architecture-0
+
+# MOOSE Application Architecture
+
+
+<div style="text-align:center;">
+<figure style="float:left">
+  <a href="http://www.mooseframework.org/static/media/wiki/images/229/4258eab8e307fd7c6bef7b7ecfea68bf/moose-blocks.png">
+    <img src="http://www.mooseframework.org/static/media/wiki/images/229/4258eab8e307fd7c6bef7b7ecfea68bf/moose-blocks.png" style="align:center;width:700px;"/>
+  </a>
+</figure>
+</div>
+---
+background-image:url(https://mooseframework.org/static/media/uploads/images/backgrounds/inl_white_slide.png)
+name:moose-code-example-0
+
+# MOOSE Code Example
+
+
+<div style="text-align:center;">
+<figure style="float:left">
+  <a href="http://www.mooseframework.org/static/media/wiki/images/229/d8b52c6a5b3d87963c6126e8587bfeef/code_example.png">
+    <img src="http://www.mooseframework.org/static/media/wiki/images/229/d8b52c6a5b3d87963c6126e8587bfeef/code_example.png" style="width:700px;"/>
+  </a>
+</figure>
+</div>
+---
+background-image:url(https://mooseframework.org/static/media/uploads/images/backgrounds/inl_white_slide.png)
+name:moose-software-quality-practices-0
+
+# MOOSE Software Quality Practices
+
+* MOOSE follows an NQA-1 (Nuclear Quality Assurance Level 1) development process.
+* All commits to MOOSE undergo review using GitHub Pull Requests and must pass a set of application regression tests before they are available to our users.
+* All changes must be accompanied by issue numbers and assessed an appropriate risk level.
+* We maintain a regression test code coverage level of 80% or better at all times.
+* We follow strict code style and formatting guidelines [(wiki/CodeStandards)](http://www.mooseframework.com/wiki/CodeStandards/).
+* We process code comments with third-party tools to generate documentation.
+
+---
+background-image:url(https://mooseframework.org/static/media/uploads/images/backgrounds/inl_white_slide.png)
+class:bottom
+name:testing
+
+
+<div style="text-align:center;">
+<figure style="float:left">
+  <a href="http://www.mooseframework.org/static/media/wiki/images/229/90972755e87262b2dfbde2fc274d19b1/revised_moose_devel.png">
+    <img src="http://www.mooseframework.org/static/media/wiki/images/229/90972755e87262b2dfbde2fc274d19b1/revised_moose_devel.png" style="width:700px;"/>
+  </a>
+</figure>
+</div>
+---
+background-image:url(https://mooseframework.org/static/media/uploads/images/backgrounds/inl_white_slide.png)
+class:botom
+name:civet
+
+
+<div style="text-align:center;">
+<figure style="float:left">
+  <a href="http://www.mooseframework.org/static/media/wiki/images/229/e59ef560349863b848c950d16d61c4d9/civet.png">
+    <img src="http://www.mooseframework.org/static/media/wiki/images/229/e59ef560349863b848c950d16d61c4d9/civet.png" style="width:700px;"/>
+  </a>
+</figure>
+</div>
+
+---
+
+background-image:url(https://mooseframework.org/static/media/uploads/images/backgrounds/inl_white_slide.png)
+name:publications
+# MOOSE Publications
+
+
+
+.tiny[.scroll[
+
+1. D. Schwen, L.K. Aagesen, J.W. Peterson, M.R. Tonks, "Rapid multiphase-field model development using a modular free energy based approach with automatic differentiation in MOOSE/MARMOT", Computational Materials Science
+ 132, May 2017, Pages 36–45, [https://doi.org/10.1016/j.commatsci.2017.02.017](https://doi.org/10.1016/j.commatsci.2017.02.017)
+
+1. J. Mangeri, Y. Espinal, A. Jokisaari, S.P. Alpay, S. Nakhmanson, and O. Heinonen, "Topological phase transformations and intrinsic size effects in ferroelectric nanoparticles", Nanoscale 2017, 9, 1616-1624. [https://doi.org/10.1039/C6NR09111C](https://doi.org/10.1039/C6NR09111C)
+
+1. K. Chockalingam,   V.G. Kouznetsova,   O. van der Sluis, and  M.G.D. Geers, "2D Phase field modeling of sintering of silver nanoparticles", Computer Methods in Applied Mechanics and Engineering, vol. 312, pp. 492-508, Dec. 2016. [http://dx.doi.org/10.1016/j.cma.2016.07.002](http://dx.doi.org/10.1016/j.cma.2016.07.002).
+
+1. H.R. Ma, A. Kunwar, B. Guo, J. Sun, C. Jiang, Y. Wang, X. Song, N. Zhao, and H.T. Ma, "Effect of cooling condition and Ag on the growth of intermetallic compounds in Sn-based solder joints", Applied Physics A, vol. 122,  pp. 1052 (1-10), Dec. 2016. [http://dx.doi.org/10.1007/s00339-016-0543-4](http://dx.doi.org/10.1007/s00339-016-0543-4).
+
+1. A.D.Lindsay, D.B. Graves and S.C. Shannon, "Fully coupled simulation of the plasma liquid interface and interfacial coefficient effects", Journal of Physics D: Applied Physics, vol. 49 (23),pp. 235204(1-9), May 2016. [http://dx.doi.org/10.1088/0022-3727/49/23/235204](http://dx.doi.org/10.1088/0022-3727/49/23/235204)
+
+1. A.M. Jokisaari,  P.W. Voorhees,  J.E. Guyer,  J. Warren, and O.G. Heinonen, "Benchmark problems for numerical implementations of phase field models", Computational Materials Science, vol. 126,  pp. 139-151, Jan. 2017. [http://dx.doi.org/10.1016/j.commatsci.2016.09.022](http://dx.doi.org/10.1016/j.commatsci.2016.09.022).
+
+
+1. A. Kunwar, H.R. Ma, H.T. Ma, B. Guo, Z. Meng, N. Zhao and M. Huang, "On the thickness of Cu6Sn5 compound at the anode of Cu/liquid Sn/Cu joints undergoing electromigration," Journal of Materials Science: Materials in Electronics, vol. 27,  pp. 7699–7706, Jul. 2016. [http://dx.doi.org/10.1007/s10854-016-4756-2](http://dx.doi.org/10.1007/s10854-016-4756-2).
+
+1. S. Biswas, D. Schwen, J. Singh, and V. Tomar, "A study of the evolution of microstructure and consolidation kinetics during sintering using a phase field modeling based approach," Extreme Mechanics Letters, Volume 7,pp.78–89, Jun. 2016. [http://dx.doi.org/10.1016/j.eml.2016.02.017](http://dx.doi.org/10.1016/j.eml.2016.02.017).
+
+1. T. Poulet,  M. Paesold and M. Veveakis, "Multi-Physics Modelling of Fault Mechanics Using REDBACK: A Parallel Open-Source Simulator for Tightly Coupled Problems," Rock Mechanics and Rock Engineering, In Press, 2016. [http://dx.doi.org/10.1007/s00603-016-0927-y](http://dx.doi.org/10.1007/s00603-016-0927-y).
+
+1. A. Kunwar, H.R. Ma, H.T. Ma, J. Sun, N. Zhao and M. Huang, "On the increase of intermetallic compound&#39;s thickness at the cold side in liquid Sn and SnAg solders under thermal gradient," Materials Letters, vol. 172,  pp. 211–215, Jun. 2016. [http://dx.doi.org/10.1016/j.matlet.2016.02.075](http://dx.doi.org/10.1016/j.matlet.2016.02.075).
+
+1. A. Kunwar, H.R. Ma, M. Qi, J. Sun, L. Qu, B. Guo, N. Zhao, Y. Wang, and Haitao Ma, “Positive feedback on imposed thermal gradient by interfacial bubbles in Cu/liquid Sn-3.5Ag/Cu joints,” in  2016 17th International Conference on Electronic Packaging Technology (ICEPT), Wuhan, China, Aug. 16–19, 2016. Paper 163, [http://dx.doi.org/10.1109/ICEPT.2016.7583207](http://dx.doi.org/10.1109/ICEPT.2016.7583207).
+
+
+1. M. Peters, M. Herwegh, M. K. Paesold, T. Poulet, K. Regenauer-Lieb and M. Veveakis, "Boudinage and folding as the same energy attractor of ductile deformation ," J. Geophys. Res.,vol. 121,  pp. 3996–4013 , May. 2016.[http://dx.doi.org/10.1002/2016JB012801](http://dx.doi.org/10.1002/2016JB012801).
+
+1. M.P. Short,D.R. Gaston, M. Jin, L. Shao, F.A. Garner, "Modeling injected interstitial effects on void swelling in self-ion irradiation experiments," Journal of Nuclear Materials, vol. 471,  pp. 200–207, Apr. 2016. [http://dx.doi.org/10.1016/j.jnucmat.2015.10.002](http://dx.doi.org/10.1016/j.jnucmat.2015.10.002).
+
+1. T. Poulet and M. Veveakis, "A viscoplastic approach for pore collapse in saturated soft rocks using REDBACK: An open-source parallel simulator for Rock mEchanics with Dissipative feedBACKs," Computers and Geotechnics, vol. 74,  pp. 211–221, Apr. 2016. [http://dx.doi.org/10.1016/j.compgeo.2015.12.015](http://dx.doi.org/10.1016/j.compgeo.2015.12.015).
+
+1. M. K. Paesold, A. P. Bassom, K. Regenauer-Lieb and M. Veveakis, "Conditions for the localisation of plastic deformation in temperature sensitive viscoplastic materials," Journal of Mechanics of Materials and Structures,  vol. 11 (2),  pp. 113–136, Feb. 2016. [http://dx.doi.org/10.2140/jomms.2016.11.113](http://dx.doi.org/10.2140/jomms.2016.11.113).
+
+1. A. M. Jokisaari, C. Permann, and K. Thornton, "A nucleation algorithm for the coupled conserved-nonconserved phase field model," Computational Materials Science, vol. 112, Part A, pp. 128–138, Feb. 2016. [http://dx.doi.org/10.1016/j.commatsci.2015.10.009](http://dx.doi.org/10.1016/j.commatsci.2015.10.009).
+
+1. X.-M. Bai, M. R. Tonks, Y. Zhang, and J. D. Hales, "Multiscale modeling of thermal conductivity of high burnup structures in UO2 fuels," Journal of Nuclear Materials, vol. 470, pp. 208–215, Mar. 2016. [http://dx.doi.org/10.1016/j.jnucmat.2015.12.028](http://dx.doi.org/10.1016/j.jnucmat.2015.12.028).
+
+1. M. R. Tonks, X.-Y. Liu, D. Andersson, D. Perez, A. Chernatynskiy, G. Pastore, C. R. Stanek, and R. Williamson, "Development of a multiscale thermal conductivity model for fission gas in UO2," Journal of Nuclear Materials, vol. 469, pp. 89–98, Feb. 2016. [http://dx.doi. org/10.1016/j.jnucmat.2015.11.042](http://dx.doi. org/10.1016/j.jnucmat.2015.11.042).
+
+1. S. R. Novascone, B. W. Spencer, J. D. Hales, and R. L. Williamson, "Evaluation of coupling approaches for thermomechanical simulations," Nuclear Engineering and Design, vol. 295, pp. 910–921, Dec. 2015. [http://dx.doi.org/10.1016/j.nucengdes.2015.07.005](http://dx.doi.org/10.1016/j.nucengdes.2015.07.005).
+
+1. A. M. Jokisaari and K. Thornton, "General method for incorporating CALPHAD free ener- gies of mixing into phase field models: Application to the alpha-zirconium/delta-hydride system," Calphad, vol. 51, pp. 334–343, Dec. 2015. [http://dx.doi.org/10.1016/j.calphad. 2015.10.011](http://dx.doi.org/10.1016/j.calphad. 2015.10.011).
+
+1. K. E. Barrett, K. D. Ellis, C. R. Glass, G. A. Roth, M. P. Teague, and J. Johns, "Critical processes and parameters in the development of accident tolerant fuels drop-in capsule irradiation tests," Nuclear Engineering and Design, vol. 294, pp. 38–51, Dec. 2015. [http://dx.doi.org/10.1016/j.nucengdes.2015.07.074](http://dx.doi.org/10.1016/j.nucengdes.2015.07.074).
+
+1. K. A. Gamble, A. F. Williams, P. K. Chan, and D. Wowk, "A feasibility study on the use of the MOOSE computational framework to simulate three-dimensional deformation of CANDU reactor fuel elements," Nuclear Engineering and Design, vol. 293, pp. 385–394, Nov. 2015. [http://dx.doi.org/10.1016/j.nucengdes.2015.07.028](http://dx.doi.org/10.1016/j.nucengdes.2015.07.028).
+
+1. A. E. Slaughter, J.W.Peterson, D.R. Gaston, C.J.Permann, D. Andrš and J. M. Miller, "Continuous Integration for Concurrent MOOSE Framework and Application Development on GitHub," Journal of Open Research Software, pp. 1–4, Nov. 2015. [Working towards Sustainable Software for Science: Practice and Experiences (WSSSPE2)](http://openresearchsoftware.metajnl.com/articles/10.5334/jors.bx/).
+
+1. X. Wu, T. Kozlowski, and J. D. Hales, "Neutronics and fuel performance evaluation of accident tolerant FeCrAl cladding under normal operation conditions," Annals of Nuclear Energy, vol. 85, pp. 763–775, Nov. 2015. [http://dx.doi.org/10.1016/j.anucene.2015.06.032](http://dx.doi.org/10.1016/j.anucene.2015.06.032).
+
+1. B. Radhakrishnan, S. B. Gorti, K. Clarno, and M. R. Tonks, "Chapter 16: Phase field," in State-of-the-Art Report on Multi-scale Modelling of Nuclear Fuels (T. M. Besmann, S. Massara, and R. Tarsi, eds.), pp. 282–290, OECD Nuclear Energy Agency Steering Committee for Nuclear Energy, Oct. 9, 2015. NEA/NSC/R(2015)5, [http://tinyurl.com/ogrdpmq](http://tinyurl.com/ogrdpmq).
+
+1. M. R. Tonks, R. Williamson, and R. Masson, “Chapter 22: Finite element modelling,” in State-of-the-Art Report on Multi-scale Modelling of Nuclear Fuels (T. M. Besmann, S. Massara, and R. Tarsi, eds.), pp. 337–343, OECD Nuclear Energy Agency Steering Committee for Nuclear Energy, Oct. 9, 2015. NEA/NSC/R(2015)5, http://tinyurl.com/q44kd7f.
+
+1. D. R. Gaston, C. J. Permann, J. W. Peterson, A. E. Slaughter, D. Andrš, Y. Wang, M. P. Short, D. M. Perez, M. R. Tonks, J. Ortensi, and R. C. Martineau, "Physics-based multiscale coupling for full core nuclear reactor simulation," Annals of Nuclear Energy, Special Issue on Multi-Physics Modelling of LWR Static and Transient Behaviour, vol. 84, pp. 45–54, Oct. 2015. [http://dx.doi.org/10.1016/j.anucene.2014.09.060](http://dx.doi.org/10.1016/j.anucene.2014.09.060).
+
+1. J. D. Hales, M. R. Tonks, F. N. Gleicher, B. W. Spencer, S. R. Novascone, R. L. Williamson, G. Pastore, and D. M. Perez, "Advanced multiphysics coupling for LWR fuel performance analysis," Annals of Nuclear Energy, Special Issue on Multi-Physics Modelling of LWR Static and Transient Behaviour, pp. 98–110, Oct. 2015. [http://dx.doi.org/10.1016/ j.anucene.2014.11.003](http://dx.doi.org/10.1016/ j.anucene.2014.11.003).
+
+1. A. McCaskey, J. J. Billings, J. H. Deyton, and A. Wojtowicz, "An update on NiCE Support for BISON," Tech. Rep. ORNL/TM-2015/530, Oak Ridge National Laboratory, Oct. 2015. [http://dx.doi.org/10.2172/1223084](http://dx.doi.org/10.2172/1223084).
+
+1. D. Ruprecht, M. Winkel, and R. Krause, "EWE: Toward electro-mechanical heart simulations with MOOSE," Proceedings in Applied Mathematics and Mechanics, Special Issue: 86th Annual Meeting of the International Association of Applied Mathematics and Mechanics (GAMM), vol. 15, pp. 683–684, Oct. 2015. [http://dx.doi.org/10.1002/pamm. 201510331](http://dx.doi.org/10.1002/pamm. 201510331).
+
+1. C. Bolisetti, J. Coleman, M. Talaat, and P. Hashimoto, "Advanced seismic fragility modeling using nonlinear soil-structure interaction analysis," Tech. Rep. INL/EXT-15-36735, Idaho National Laboratory, Sept. 2015. http://tinyurl.com/o4ja5n4.
+
+1. H. Zhang, H. Zhao, F. Gleicher, M. DeHart, L. Zou, D. Andrš, and R. Martineau, "RELAP- 7 Development Updates," Tech. Rep. INL/EXT-15-36763, Idaho National Laboratory, Sept. 2015. http://tinyurl.com/p5yns5e.
+
+1. G. Pastore, S.R. Novascone, R.L. Williamson, J.D. Hales, B. W. Spencer, and D. S. Stafford, “Modelling of fuel behaviour during loss-of-coolant accidents using the BISON code,” in Top Fuel 2015, Zurich, Switzerland, European Nuclear Society, Sept. 13–17, 2015. Paper A0083, http://tinyurl.com/p5l5hrl.
+
+1. M. O. Delchini, J. C. Ragusa, and R. A. Berry, "Entropy-based viscous regularization for the multi-dimensional Euler equations in low-Mach and transonic flows," Computers & Fluids, vol. 118, pp. 225–244, Sept. 2015. [http://dx.doi.org/10.1016/j.compfluid.2015. 06.005](http://dx.doi.org/10.1016/j.compfluid.2015. 06.005).
+
+1. M. O. Delchini, J. C. Ragusa, and J. Morel, "Entropy-based artificial viscosity stabilization for non-equilibrium Grey Radiation-Hydrodynamics," Journal of Computational Physics, vol. 296, pp. 293–313, Sept. 2015. [http://dx.doi.org/10.1016/j.jcp.2015.04.039](http://dx.doi.org/10.1016/j.jcp.2015.04.039).
+
+1. B. Spencer, M. Backman, W. Hoffman, and P. Chakraborty, "Reactor pressure vessel integrity assessments with the Grizzly simulation code," in Transactions, SMiRT-23, Manchester, UK, August 10–14, 2015, Division III, 2015. Paper ID 710, [http://smirt23.uk/attachments/SMiRT-23_Paper_710.pdf](http://smirt23.uk/attachments/SMiRT-23_Paper_710.pdf).
+
+1. J. C. Joe, R. B. Shirley, D. Mandelli, R. L. Boring, and C. L. Smith, "The development of dynamic human reliability analysis simulations for inclusion in risk informed safety margin characterization frameworks," Procedia Manufacturing, Special Issue: 6th International Conference on Applied Human Factors and Ergonomics (AHFE), July 28–30, vol. 3, pp. 1305–1311, 2015. [http://dx.doi.org/10.1016/j.promfg.2015.07.278](http://dx.doi.org/10.1016/j.promfg.2015.07.278).
+
+1. D. A. Andersson, M. R. Tonks, L. Casillas, S. Vyas, P. Nerikar, B. P. Uberuaga, and C. R. Stanek, "Multiscale simulation of xenon diffusion and grain boundary segregation in UO2," Journal of Nuclear Materials, vol. 462, pp. 15–25, July 2015. [http://dx.doi.org/10. 1016/j.jnucmat.2015.03.019](http://dx.doi.org/10. 1016/j.jnucmat.2015.03.019).
+
+1. J. Mangeri, O. Heinonen, Dmitry Karpeyev, and Serge Nakhmanson. Influence of Elastic and Surface Strains on the Optical Properties of Semiconducting Core-Shell Nanoparticles, Phys. Rev. Applied 4, 014001 – Published 7 July 2015 [http://dx.doi.org/10.1103/PhysRevApplied.4.014001](http://dx.doi.org/10.1103/PhysRevApplied.4.014001)
+
+1. S. Simunovic and T. M. Besmann, "Coupling of thermochemistry solver THERMOCHIMICA with MOOSE/BISON," Tech. Rep. ORNL/TM-2015/56467, Oak Ridge National Laboratory, June 2015. [http://dx.doi.org/10.2172/1214026](http://dx.doi.org/10.2172/1214026).
+
+1. D. Mandelli, S. Prescott, C. Smith, A. Alfonsi, C. Rabiti, J. Cogliati, and R. Kinoshita, "A flooding induced station blackout analysis for a pressurized water reactor using the RISMC toolkit," Science and Technology of Nuclear Installations, vol. 2015, pp. 1–14, Article ID: 308163, May 2015. [http://dx.doi.org/10.1155/2015/308163](http://dx.doi.org/10.1155/2015/308163).
+
+1. M. R. Tonks, D. Schwen, Y. Zhang, P. Chakraborty, X. Bai, B. Fromm, J. Yu, M. C. Teague, and D. A. Andersson, "Assessment of MARMOT: A Mesoscale Fuel Performance Code," Tech. Rep. INL/EXT-15-35108, Idaho National Laboratory, Apr. 2015. [http://dx.doi. org/10.2172/1196556](http://dx.doi. org/10.2172/1196556).
+
+1. Y. Wang, M. D. DeHart, D. R. Gaston, F. N. Gleicher, R. C. Martineau, J. W. Peterson, J. Ortensi, and S. Schunert, "Convergence study of RattleSnake solutions for the two-dimensional C5G7 MOX benchmark," in Proceedings of the Joint International Conference on Mathematics and Computation (M&C), Supercomputing in Nuclear Applications (SNA), and the Monte Carlo (MC) Method, Nashville, TN, Apr. 19–23, 2015.[ http://www.mc2015.org]( http://www.mc2015.org).
+
+1. M. R. Tonks, Y. Zhang, A. Butterfield, and X.-M. Bai, "Development of a grain boundary pinning model that considers particle size distribution using the phase field method," Modelling and Simulation in Materials Science and Engineering, vol. 23, no. 4, p. 045009 (16pp), 2015. [http://dx.doi.org/10.1088/0965-0393/23/4/045009](http://dx.doi.org/10.1088/0965-0393/23/4/045009).
+
+1. W. Liu, R. Montgomery, C. Tome, C. Stanek, and J. Hales, "VPSC implementation in BISON-CASL code for modeling large deformation problems," Tech. Rep. CASL-U-2015- 0175-000, Consortium for Advanced Simulation of LWRs (CASL), Apr. 2015. [http: //www.casl.gov/docs/CASL-U-2015-0175-000.pdf](http: //www.casl.gov/docs/CASL-U-2015-0175-000.pdf).
+
+1. D. Ruprecht, M. Winkel, and R. Krause, "EWE—A coupled electro-mechanical heart model in the general purpose FEM framework MOOSE," in 86th Annual Meeting of the International Association of Applied Mathematics and Mechanics (GAMM 2015), Lecce, Italy, p. 20, Mar. 23–27, 2015. http://tinyurl.com/ntbmtk3.
+
+1. J. D. Hales, M. R. Tonks, K. Chockalingam, D. M. Perez, S. R. Novascone, B. W. Spencer, and R. L. Williamson, “Asymptotic expansion homogenization for multiscale nuclear fuel analysis,” Computational Materials Science, vol. 99, pp. 290–297, Mar. 2015. [http://dx. doi.org/10.1016/j.commatsci.2014.12.039](http://dx. doi.org/10.1016/j.commatsci.2014.12.039).
+
+1. G. Pastore, L. P. Swiler, J. D. Hales, S. R. Novascone, D. M. Perez, B. W. Spencer, L. Luzzi, P. Van Uffelen, and R. L. Williamson, "Uncertainty and sensitivity analysis of fission gas be- havior in engineering-scale fuel modeling," Journal of Nuclear Materials, vol. 456, pp. 398– 408, Jan. 2015. [http://dx.doi.org/10.1016/j.jnucmat.2014.09.077](http://dx.doi.org/10.1016/j.jnucmat.2014.09.077).
+
+1. B. W. Spencer, H. Huang, J. E. Dolbow, and J. D. Hales, "Discrete modeling of early-life thermal fracture in ceramic nuclear fuel," Tech. Rep. INL/CON-14-31355, Idaho National Laboratory, Mar. 2015. http://www.osti.gov/scitech/biblio/1177218, Presented at the 2014 Water Reactor Fuel Performance Meeting, Sendai, Japan, Sep. 14–17, 2014.
+
+1. S. Schunert, Y. Wang, R. C. Martineau, and M. D. DeHart, "A new mathematical adjoint for the modified SAAF-SN equations," Annals of Nuclear Energy, vol. 75, pp. 340–352, Jan. 2015. [http://dx.doi.org/10.1016/j.anucene.2014.08.028](http://dx.doi.org/10.1016/j.anucene.2014.08.028).
+
+1. H. Zhao, H. Zhang, L. Zou, D. Andrš, and R. Martineau, "Demonstration of fully coupled simplified extended station black-out accident simulation with RELAP-7," Tech. Rep. INL/CON-13-30940, Idaho National Laboratory, Mar. 2015. http://www.osti.gov/ scitech/biblio/1177212, Presented at PHYSOR 2014, Kyoto, Japan, Sep. 28–Oct. 3, 2014.
+
+1. D.R. Gaston, J.W. Peterson, C.J. Permann, D. Andrš, A.E. Slaughter, and J.M. Miller. Continuous integration for concurrent computational framework and application development. Journal of Open Research Software, 2(1):1–6, July 2014. Special Collection: Working towards Sustainable Software for Science: Practice and Experiences, Article e10, [http://dx.doi.org/10.5334/jors.as](http://dx.doi.org/10.5334/jors.as).
+
+1. M. Tonks, D. Gaston, P. Millett, D. Andrš, and P. Talbot. An object-oriented finite element framework for multiphysics phase field simulations. Comp. Mat. Sci, 51(1):20–29, 2012.
+
+1. R. Williamson, J. Hales, S. Novascone, M. Tonks, D. Gaston, C. Permann, D. Andrš, and R. Martineau. Multidimensional Multiphysics Simulation of Nuclear Fuel Behavior. Submitted J. Nuclear Materials, 2011[http://dx.doi.org/10.1016/j.jnucmat.2012.01.012](http://dx.doi.org/10.1016/j.jnucmat.2012.01.012).
+
+1. M. Tonks, D. Gaston, C. Permann, P. Millett, G. Hansen, C. Newman, and D. Wolf. A coupling methodology for mesoscale-informed nuclear fuel performance codes. Nucl. Engrg. Design, 240:2877–2883, 2010.
+
+1. D. Gaston, G. Hansen, S. Kadioglu, D. Knoll, C. Newman, H. Park, C. Permann, and W. Taitano. Parallel multiphysics algorithms and software for computational nuclear engineering. Journal of Physics: Conference Series, 180(1):012012, 2009.
+
+1. M. Tonks, G. Hansen, D. Gaston, C. Permann, P. Millett, and D. Wolf. Fully-coupled engineering and mesoscale simulations of thermal conductivity in UO2 fuel using an implicit multiscale approach. Journal of Physics: Conference Series, 180(1):012078, 2009.
+
+1. C. Newman, G. Hansen, and D. Gaston. Three dimensional coupled simulation of thermomechanics, heat, and oxygen diffusion in UO2 nuclear fuel rods. Journal of Nuclear Materials, 392:6–15, 2009.
+
+1. D. Gaston, C. Newman, G. Hansen, and D. Lebrun-Grandie. MOOSE: A parallel computational framework for coupled systems of nonlinear equations. Nucl. Engrg. Design, 239:1768–1778, 2009.
+
+1. G. Hansen, C. Newman, D. Gaston, and C. Permann. An implicit solution framework for reactor fuel performance simulation. In 20th International Conference on Structural Mechanics in Reactor Technology (SMiRT 20), paper 2045, Espoo (Helsinki), Finland, August 9–14 2009.
+
+1. G. Hansen, R. Martineau, C. Newman, and D. Gaston. Framework for simulation of pellet cladding thermal interaction (PCTI) for fuel performance calculations. In American Nuclear Society 2009 International Conference on Advances in Mathematics, Computational Methods, and Reactor Physics, Saratoga Springs, NY, May 3–7 2009.
+
+1. C. Newman, D. Gaston, and G. Hansen. Computational foundations for reactor fuel performance modeling. In American Nuclear Society 2009 International Conference on Advances in Mathematics, Computational Methods, and Reactor Physics, Saratoga Springs, NY, May 3–7 2009.
+
+1. D. Gaston, C. Newman, and G. Hansen. MOOSE: a parallel computational framework for coupled systems of nonlinear equations. In American Nuclear Society 2009 International Conference on Advances in Mathematics, Computational Methods, and Reactor Physics, Saratoga Springs, NY, May 3–7 2009.
+
+1. L. Guo, H. Huang, D. Gaston, and G. Redden. Modeling of calcite precipitation driven by bacteria-facilitated urea hydrolysis in a flow column using a fully coupled, fully implicit parallel reactive transport simulator. In Eos Transactions American Geophysical Union, 90(52), Fall Meeting Supplement, AGU 90(52), San Francisco, CA, Dec 14-18 2009.
+
+1. R. Podgorney, H. Huang, and D. Gaston. Massively parallel fully coupled implicit modeling of coupled thermal-hydrological-mechanical processes for enhanced geothermal system reservoirs. In Proceedings, 35th Stanford Geothermal Workshop, Stanford University, Palo Alto, CA, Feb 1-3 2010.
+
+1. H. Park, D. Knoll, D. Gaston, and R. Martineau. "Tightly Coupled Multiphysics Algorithms for Pebble Bed Reactors. Nuclear Science and Engineering," 166(2):118-133, 2010. [http://dx.doi.org/10.13182/NSE09-104](http://dx.doi.org/10.13182/NSE09-104)
+
+]]
+
+1. M. O. Delchini, J. C. Ragusa and R. Berry. "Viscous Regularization for the Non-Equilibrium Seven Equation Two-phase Flow Model,". Journal of Scientific Computing,69(2):764-804,2016. [http://dx.doi.org/10.1007/s10915-016-0217-6](http://dx.doi.org/10.1007/s10915-016-0217-6).
+
+]]
+
+
+
+---
+
+background-image:url(https://mooseframework.org/static/media/uploads/images/backgrounds/inl_dark_title.png)
+class:middle, cover
+name:adapt-title
+# Mesh Adaptivity
+
+---
+background-image:url(https://mooseframework.org/static/media/uploads/images/backgrounds/inl_white_slide.png)
+name:adapt-contents-0
+# Mesh Adaptivity Contents
+<p style="line-height:12px;text-align:left;text-indent:0px;"><a href="#refinement-patterns-0">Refinement Patterns</a><span style="float:right;"><a href="#refinement-patterns-0">21</a></span></p>
+<p style="line-height:12px;text-align:left;text-indent:0px;"><a href="#indicators-0">Indicators</a><span style="float:right;"><a href="#indicators-0">22</a></span></p>
+<p style="line-height:12px;text-align:left;text-indent:0px;"><a href="#markers-0">Markers</a><span style="float:right;"><a href="#markers-0">24</a></span></p>
+<p style="line-height:12px;text-align:left;text-indent:0px;"><a href="#input-file-syntax-0">Input File Syntax</a><span style="float:right;"><a href="#input-file-syntax-0">26</a></span></p>
+<p style="line-height:12px;text-align:left;text-indent:0px;"><a href="#example-5-0">Example 5</a><span style="float:right;"><a href="#example-5-0">27</a></span></p>
+<p style="line-height:12px;text-align:left;text-indent:0px;"><a href="#example-5:-automatic-mesh-adaptivity-subtitle">Example 5: Automatic Mesh Adaptivity</a><span style="float:right;"><a href="#example-5:-automatic-mesh-adaptivity-subtitle">28</a></span></p>
+<p style="line-height:12px;text-align:left;text-indent:25px;"><a href="#results-0">Results</a><span style="float:right;"><a href="#results-0">29</a></span></p>
+
+---
+background-image:url(https://mooseframework.org/static/media/uploads/images/backgrounds/inl_white_slide.png)
+name:h-adaptivity-0
+  # h-Adaptivity
+
+- `$ h $`-adaptivity is a method of automatically refining/coarsening the mesh in regions of high/low estimated solution error.
+- The idea is to concentrate degrees of freedom (DOFs) where the error is highest, while reducing DOFs where the solution is already well-captured.
+- This is achieved through splitting and joining elements from the original mesh based on an error `Indicator`.
+- Once an error `Indicator` has been computed, a `Marker` is used to decide which cells to refine and coarsen.
+- Mesh adaptivity can be employed in both `Steady` and `Transient` Executioners.
+
+---
+background-image:url(https://mooseframework.org/static/media/uploads/images/backgrounds/inl_white_slide.png)
+name:refinement-patterns-0
+
+# Refinement Patterns
+
+.footnotesize[
+
+.left-75[
+
+- MOOSE employs "self-similar", isotropic refinement patterns.
+- When an element is marked for refinement, it is split into elements of the same type.
+- For example, when using Quad4 elements, four "child" elements are created when the element is refined.
+- Coarsening happens in reverse, children are deleted and the "parent" element is reactivated.
+- The original mesh starts at refinement level 0.
+- Each time an element is split, the children are assigned a refinement level one higher than their parents.
+
+]
+
+]
+
+.right-25[
+
+
+<div style="text-align:center;">
+<figure style="float:left">
+  <a href="http://www.mooseframework.org/static/media/wiki/images/258/724deb1800966a5a64bddb5d27bbec4c/element_adaptivity.png">
+    <img src="http://www.mooseframework.org/static/media/wiki/images/258/724deb1800966a5a64bddb5d27bbec4c/element_adaptivity.png"/>
+  </a>
+</figure>
+</div>]
+
+---
+background-image:url(https://mooseframework.org/static/media/uploads/images/backgrounds/inl_white_slide.png)
+name:indicators-0
+
+# Indicators
+
+- `Indicators` attempt to report a relative amount of "error" for each element.
+- Built-in `Indicators` include:
+
+| `Indicator` | Description |
+|:-|:-|
+| `GradientJumpIndicator` | Jump in the gradient of a variable across element edges (pictured to the right). A good "curvature" indicator that works well over a wide range of problems. |
+| `FluxJumpIndicator` | Similar to `GradientJump`, except that a scalar coefficient (e.g. thermal conductivity) can be provided to produce a physical "flux" quantity. |
+| `LaplacianJumpIndicator` | Jump in the second derivative of a variable. Only useful for `$ C^1 $` shape functions. |
+| `AnalyticIndicator` | Computes the difference between the finite element solution and a user-supplied `Function` representing the analytic solution to the problem.
+
+---
+background-image:url(https://mooseframework.org/static/media/uploads/images/backgrounds/inl_white_slide.png)
+name:indicators-1
+# Indicators (cont.)
+
+
+- In higher dimensions, the gradient jump is integrated around element edges to find contributions to each connected element.
+
+
+<div style="text-align:center;">
+<figure style="float:left">
+  <a href="http://www.mooseframework.org/static/media/wiki/images/258/f43ca19aaae1a5599e68e17392e22e46/kelly.png">
+    <img src="http://www.mooseframework.org/static/media/wiki/images/258/f43ca19aaae1a5599e68e17392e22e46/kelly.png"/>
+  </a>
+</figure>
+</div>
+---
+background-image:url(https://mooseframework.org/static/media/uploads/images/backgrounds/inl_white_slide.png)
+name:markers-0
+
+# Markers
+
+- After an `Indicator` has computed the error for each element, a decision to refine or coarsen elements must be made.
+- The `Marker` class is used for this purpose. Built-in `Markers` include:
+
+| `Marker` | Description |
+|:-|:-|
+| `ErrorFractionMarker` | Selects elements based on their contribution to the total error (see Figure). |
+| `ErrorToleranceMaker` | Refine if error is greater than a specified value. Coarsen if less than. |
+| `ValueThresholdMarker` | Refine if variable value is greater than a specific value. Coarsen if less than. |
+| `UniformMarker` | Refine or coarsen all elements. |
+| `BoxMarker` | Refine or coarsen inside or outside a given box. |
+| `ComboMarker` | Combine several of the above `Markers`. |
+
+---
+background-image:url(https://mooseframework.org/static/media/uploads/images/backgrounds/inl_white_slide.png)
+name:markers-1
+# Markers (cont.)
+
+
+.footnotesize[
+
+.left-50[
+
+- `Markers` produce an element field that can be viewed in your visualization utility.
+- Custom `Markers` are easy to create by inheriting from the `Marker` base class.
+
+]
+
+]
+
+.right-50[
+
+
+<div style="text-align:center;">
+<figure style="float:left">
+  <a href="http://www.mooseframework.org/static/media/wiki/images/258/c7d0631c0c975ea91006641e38e358f2/percent_of_error.png">
+    <img src="http://www.mooseframework.org/static/media/wiki/images/258/c7d0631c0c975ea91006641e38e358f2/percent_of_error.png"/>
+  </a>
+</figure>
+</div>]
+
+---
+background-image:url(https://mooseframework.org/static/media/uploads/images/backgrounds/inl_white_slide.png)
+name:input-file-syntax-0
+
+# Input File Syntax
+
+.left-60[
+
+- To enable adaptivity, add an `Adaptivity` block to the input file.
+- The `Adaptivity` block has several parameters:
+    * `marker`: (Optional) Name of the `Marker` to use. *If not set, no mesh adaptivity will be done*.
+    * `steps`: Number of refinement steps to do in a steady state calculation. Ignored by `Transient` executioners.
+- `Adaptivity` has two sub-blocks: `Indicators` and `Markers`. Within these blocks, you can specify multiple `Indicator` and `Marker` objects that will be active in the simulation.
+
+]
+
+.right-40[
+
+```text
+[Adaptivity]
+  marker = errorfrac
+  steps = 2
+
+  [./Indicators]
+    [./error]
+      type = GradientJumpIndicator
+      variable = convected
+    [../]
+  [../]
+
+  [./Markers]
+    [./errorfrac]
+      type = ErrorFractionMarker
+      refine = 0.5
+      coarsen = 0
+      indicator = error
+    [../]
+  [../]
+[]
+```
+
+]
+
+---
+background-image:url(https://mooseframework.org/static/media/uploads/images/backgrounds/inl_white_slide.png)
+name:example-5-0
+
+# Example 5
+Look at [Example 5](http://www.mooseframework.org//wiki/MooseExamples/Example_05)
+
+
+---
+background-image:url(https://mooseframework.org/static/media/uploads/images/backgrounds/inl_white_slide.png)
+class:middle, center
+name:example-5:-automatic-mesh-adaptivity-subtitle
+
+
+
+# Example 5: Automatic Mesh Adaptivity
+
+
+---
+background-image:url(https://mooseframework.org/static/media/uploads/images/backgrounds/inl_white_slide.png)
+name:results-0
+
+
+## Results
+
+
+<div style="text-align:center;">
+<figure style="float:left">
+  <a href="http://www.mooseframework.org/static/media/wiki/images/268/bc0c925ee87dfacbb46a2ab9ab691515/ex5-mesh-0.png">
+    <img src="http://www.mooseframework.org/static/media/wiki/images/268/bc0c925ee87dfacbb46a2ab9ab691515/ex5-mesh-0.png" style="width:150px;"/>
+  </a>
+  <figcaption>
+    Initial Mesh
+  </figcaption>
+</figure>
+</div>
+
+
+<div style="text-align:center;">
+<figure style="float:left">
+  <a href="http://www.mooseframework.org/static/media/wiki/images/268/001f63403927f052c544e9927634f400/ex5-mesh-1.png">
+    <img src="http://www.mooseframework.org/static/media/wiki/images/268/001f63403927f052c544e9927634f400/ex5-mesh-1.png" style="width:150px;"/>
+  </a>
+  <figcaption>
+    Adaptivity Step 1
+  </figcaption>
+</figure>
+</div>
+
+
+<div style="text-align:center;">
+<figure style="float:left">
+  <a href="http://www.mooseframework.org/static/media/wiki/images/268/cc56c019777a210111543725123a67fa/ex5-mesh-2.png">
+    <img src="http://www.mooseframework.org/static/media/wiki/images/268/cc56c019777a210111543725123a67fa/ex5-mesh-2.png" style="width:150px;"/>
+  </a>
+  <figcaption>
+    Adaptivity Step 2
+  </figcaption>
+</figure>
+</div>
+
+
+<div style="text-align:center;">
+<figure style="float:left">
+  <a href="http://www.mooseframework.org/static/media/wiki/images/268/02380202767791d0537a50dabf1dd431/ex5-mesh-3.png">
+    <img src="http://www.mooseframework.org/static/media/wiki/images/268/02380202767791d0537a50dabf1dd431/ex5-mesh-3.png" style="width:150px;"/>
+  </a>
+  <figcaption>
+    Adaptivity Step 3
+  </figcaption>
+</figure>
+</div>
+
+
+<div style="text-align:center;">
+<figure style="float:left">
+  <a href="http://www.mooseframework.org/static/media/wiki/images/268/740d551d4f9faa3f3a1f68dc9159bb01/ex5-mesh-4.png">
+    <img src="http://www.mooseframework.org/static/media/wiki/images/268/740d551d4f9faa3f3a1f68dc9159bb01/ex5-mesh-4.png" style="width:150px;"/>
+  </a>
+  <figcaption>
+    Adaptivity Step 4
+  </figcaption>
+</figure>
+</div>
+
+
+<div style="text-align:center;">
+<figure style="float:left">
+  <a href="http://www.mooseframework.org/static/media/wiki/images/268/22200202a90f5665b81387189a455def/ex5-mesh-5.png">
+    <img src="http://www.mooseframework.org/static/media/wiki/images/268/22200202a90f5665b81387189a455def/ex5-mesh-5.png" style="width:150px;"/>
+  </a>
+  <figcaption>
+    Adaptivity Step 5
+  </figcaption>
+</figure>
+</div>
+
+
+<div style="text-align:center;">
+<figure style="float:left">
+  <a href="http://www.mooseframework.org/static/media/wiki/images/268/755811e2ab090f6db81eac9f312f08a4/ex5-mesh-6.png">
+    <img src="http://www.mooseframework.org/static/media/wiki/images/268/755811e2ab090f6db81eac9f312f08a4/ex5-mesh-6.png" style="width:150px;"/>
+  </a>
+  <figcaption>
+    Adaptivity Step 6
+  </figcaption>
+</figure>
+</div>
+
+
+<div style="text-align:center;">
+<figure style="float:left">
+  <a href="http://www.mooseframework.org/static/media/wiki/images/268/f1ef5a8ffc573141e0870563c6d68394/adapt-0.png">
+    <img src="http://www.mooseframework.org/static/media/wiki/images/268/f1ef5a8ffc573141e0870563c6d68394/adapt-0.png" style="width:150px;"/>
+  </a>
+  <figcaption>
+    Example 5 Output
+  </figcaption>
+</figure>
+</div>## Complete Source Files
+.scroll[
+[ex05.i](https://github.com/idaholab/moose/blob/devel/examples/ex05_amr/ex05.i)
+
+```text
+[Mesh]
+  file = cube-hole.e
+[]
+
+[Variables]
+  [./convected]
+    order = FIRST
+    family = LAGRANGE
+  [../]
+  [./diffused]
+    order = FIRST
+    family = LAGRANGE
+  [../]
+[]
+
+[Kernels]
+  [./example_diff]
+    type = ExampleCoefDiffusion
+    variable = convected
+    coef = 0.125
+  [../]
+  [./conv]
+    type = ExampleConvection
+    variable = convected
+    some_variable = diffused
+  [../]
+  [./diff]
+    type = Diffusion
+    variable = diffused
+  [../]
+[]
+
+[BCs]
+  # convected=0 on all vertical sides except the right (x-max)
+  [./cylinder_convected]
+    type = DirichletBC
+    variable = convected
+    boundary = inside
+    value = 1
+  [../]
+  [./exterior_convected]
+    type = DirichletBC
+    variable = convected
+    boundary = 'left top bottom'
+    value = 0
+  [../]
+  [./left_diffused]
+    type = DirichletBC
+    variable = diffused
+    boundary = left
+    value = 0
+  [../]
+  [./right_diffused]
+    type = DirichletBC
+    variable = diffused
+    boundary = right
+    value = 10
+  [../]
+[]
+
+[Executioner]
+  type = Steady
+  solve_type = 'PJFNK'
+
+  l_tol = 1e-3
+  nl_rel_tol = 1e-6
+  nl_abs_tol = 1e-9
+[]
+
+[Adaptivity]
+  marker = errorfrac
+  steps = 2
+  [./Indicators]
+    [./error]
+      type = GradientJumpIndicator
+      variable = convected
+      outputs = none
+    [../]
+  [../]
+  [./Markers]
+    [./errorfrac]
+      type = ErrorFractionMarker
+      refine = 0.5
+      coarsen = 0
+      indicator = error
+      outputs = none
+    [../]
+  [../]
+[]
+
+[Outputs]
+  execute_on = 'timestep_end'
+  exodus = true
+[]
+```
+
+]
+
+
+[ExampleCoefDiffusion.h](https://github.com/idaholab/moose/blob/devel/examples/ex05_amr/include/kernels/ExampleCoefDiffusion.h)
+
+```cpp
+
+#ifndef EXAMPLECOEFDIFFUSION_H
+#define EXAMPLECOEFDIFFUSION_H
+
+#include "Kernel.h"
+
+// Forward Declarations
+class ExampleCoefDiffusion;
+
+template <>
+InputParameters validParams<ExampleCoefDiffusion>();
+
+class ExampleCoefDiffusion : public Kernel
+{
+public:
+  ExampleCoefDiffusion(const InputParameters & parameters);
+
+protected:
+  virtual Real computeQpResidual() override;
+
+  virtual Real computeQpJacobian() override;
+
+private:
+  Real _coef;
+};
+#endif // EXAMPLECOEFDIFFUSION_H
+```
+
+
+[ExampleCoefDiffusion.C](https://github.com/idaholab/moose/blob/devel/examples/ex05_amr/src/kernels/ExampleCoefDiffusion.C)
+
+```cpp
+
+#include "ExampleCoefDiffusion.h"
+
+template <>
+InputParameters
+validParams<ExampleCoefDiffusion>()
+{
+  InputParameters params = validParams<Kernel>();
+  params.set<Real>("coef") = 0.0;
+  return params;
+}
+
+ExampleCoefDiffusion::ExampleCoefDiffusion(const InputParameters & parameters)
+  : Kernel(parameters), _coef(getParam<Real>("coef"))
+{
+}
+
+Real
+ExampleCoefDiffusion::computeQpResidual()
+{
+  return _coef * _grad_test[_i][_qp] * _grad_u[_qp];
+}
+
+Real
+ExampleCoefDiffusion::computeQpJacobian()
+{
+  return _coef * _grad_test[_i][_qp] * _grad_phi[_j][_qp];
+}
+```
+
+
+
+
+
+---
+
+background-image:url(https://mooseframework.org/static/media/uploads/images/backgrounds/inl_dark_title.png)
+class:middle, cover
+name:executioners-title
+# Executioners
+
+---
+background-image:url(https://mooseframework.org/static/media/uploads/images/backgrounds/inl_white_slide.png)
+name:executioners-contents-0
+# Executioners Contents
+<p style="line-height:12px;text-align:left;text-indent:0px;"><a href="#steady-state-executioner-0">Steady-state Executioner</a><span style="float:right;"><a href="#steady-state-executioner-0">33</a></span></p>
+<p style="line-height:12px;text-align:left;text-indent:0px;"><a href="#common-executioner-options-0">Common Executioner Options</a><span style="float:right;"><a href="#common-executioner-options-0">34</a></span></p>
+<p style="line-height:12px;text-align:left;text-indent:0px;"><a href="#transient-executioners-0">Transient Executioners</a><span style="float:right;"><a href="#transient-executioners-0">35</a></span></p>
+<p style="line-height:12px;text-align:left;text-indent:0px;"><a href="#transient-analysis-0">Transient Analysis</a><span style="float:right;"><a href="#transient-analysis-0">36</a></span></p>
+<p style="line-height:12px;text-align:left;text-indent:0px;"><a href="#custom-time-kernel-0">Custom Time Kernel</a><span style="float:right;"><a href="#custom-time-kernel-0">37</a></span></p>
+<p style="line-height:12px;text-align:left;text-indent:0px;"><a href="#summary-of-input-file-syntax-changes-for-transient-analysis-0">Summary of input file syntax changes for transient analysis</a><span style="float:right;"><a href="#summary-of-input-file-syntax-changes-for-transient-analysis-0">39</a></span></p>
+<p style="line-height:12px;text-align:left;text-indent:0px;"><a href="#convergence-rates-0">Convergence Rates</a><span style="float:right;"><a href="#convergence-rates-0">40</a></span></p>
+<p style="line-height:12px;text-align:left;text-indent:0px;"><a href="#example-6-0">Example 6</a><span style="float:right;"><a href="#example-6-0">42</a></span></p>
+<p style="line-height:12px;text-align:left;text-indent:0px;"><a href="#eigenvalue-executioner-0">Eigenvalue Executioner</a><span style="float:right;"><a href="#eigenvalue-executioner-0">43</a></span></p>
+
+---
+background-image:url(https://mooseframework.org/static/media/uploads/images/backgrounds/inl_white_slide.png)
+name:built-in-executioners-0
+  # Built-in Executioners
+
+* There are two main types of Executioners: Steady and Transient.
+* MOOSE provides a number of built-in executioners, but you can extend this system and add your own.
+
+---
+background-image:url(https://mooseframework.org/static/media/uploads/images/backgrounds/inl_white_slide.png)
+name:steady-state-executioner-0
+
+# Steady-state Executioner
+
+* Steady-state executioners generally solve the nonlinear system just once.
+* However, our steady-state executioner can solve the nonlinear system multiple times while adaptively refining the mesh to improve the solution.
+
+---
+background-image:url(https://mooseframework.org/static/media/uploads/images/backgrounds/inl_white_slide.png)
+name:common-executioner-options-0
+
+# Common Executioner Options
+
+* There are a number of options that appear in the executioner block and are used to control the solver. The best way to view these is through peacock. Here are a few common options:
+
+option | definition
+-|-
+`l_tol` | Linear Tolerance
+`l_max_its` | Max Linear Iterations
+`nl_rel_tol` | Nonlinear Relative Tolerance
+`nl_abs_tol` | Nonlinear Absolute Tolerance
+`nl_max_its` | Max Nonlinear Iterations
+
+---
+background-image:url(https://mooseframework.org/static/media/uploads/images/backgrounds/inl_white_slide.png)
+name:transient-executioners-0
+
+# Transient Executioners
+
+* Transient executioners solve the nonlinear system at least once per time step.
+* Some frequently-used Transient Executioner options
+
+option | definition
+-|-
+    `dt` | Starting time step size
+    `num_steps` | Number of time steps
+    `start_time` | The start time of the simulation
+    `end_time` | The end time of the simulation
+    `scheme` | Time integration scheme (discussed next)
+
+* Advanced Transient Executioner options
+
+option | definition
+-|-
+    `trans_ss_check` | Whether to try and detect achievement of steady-state (Default = `false`)
+    `ss_check_tol` | Used for determining a steady-state; Compared against the difference in solution vectors between current and old time steps (Default = `1e-8`)
+
+Note that if you have things like piecewise-constant transient forcing functions, you may achieve temporary steady-states and may not want to terminate the simulation at those points. In this case a better solution may be to set an `nl_abs_tol` which will allow your simulation to converge in 0 non-linear iterations during periodic steady-states, but will also allow your simulation to solve as usual when your forcing functions are perturbed.
+
+---
+background-image:url(https://mooseframework.org/static/media/uploads/images/backgrounds/inl_white_slide.png)
+name:transient-analysis-0
+
+# Transient Analysis
+
+* MOOSE provides the following implicit `TimeIntegrators`:
+    1.  Backward Euler (default)
+    2.  BDF2
+    3.  Crank-Nicolson
+    4.  Implicit-Euler
+    5.  Implicit Midpoint (implemented as two-stage RK method) 
+    6.  Diagonally-Implicit Runge-Kutta (DIRK) methods of order 2 and 3.
+
+* And these explicit `TimeIntegrators`:
+    1.  Explicit-Euler
+    2.  Various two-stage explicit Runge-Kutta methods (Midpoint, Heun, Ralston, TVD)
+
+* Each one of these supports adaptive time stepping.
+* They are all accessed via the `TimeDerivative` Kernel object.
+
+---
+background-image:url(https://mooseframework.org/static/media/uploads/images/backgrounds/inl_white_slide.png)
+name:custom-time-kernel-0
+
+# Custom Time Kernel
+
+* If you need to provide a coefficient for the transient term (such as `$ \rho c_p $` in classical heat conduction) inherit from the `TimeDerivative` Kernel in MOOSE.
+* Then, in `computeQpResidual/Jacobian()` return the product of your coefficient and `TimeDerivative::computeQpResidual/Jacobian()`.
+
+---
+background-image:url(https://mooseframework.org/static/media/uploads/images/backgrounds/inl_white_slide.png)
+name:custom-time-kernel-1
+# Custom Time Kernel (cont.)
+
+
+[ExampleTimeDerivative.C](https://github.com/idaholab/moose/blob/devel/examples/ex06_transient/src/kernels/ExampleTimeDerivative.C)
+
+```cpp
+
+#include "ExampleTimeDerivative.h"
+
+#include "Material.h"
+
+template <>
+InputParameters
+validParams<ExampleTimeDerivative>()
+{
+  InputParameters params = validParams<TimeDerivative>();
+  params.addParam<Real>("time_coefficient", 1.0, "Time Coefficient");
+  return params;
+}
+
+ExampleTimeDerivative::ExampleTimeDerivative(const InputParameters & parameters)
+  : TimeDerivative(parameters),
+    // This kernel expects an input parameter named "time_coefficient"
+    _time_coefficient(getParam<Real>("time_coefficient"))
+{
+}
+
+Real
+ExampleTimeDerivative::computeQpResidual()
+{
+  return _time_coefficient * TimeDerivative::computeQpResidual();
+}
+
+Real
+ExampleTimeDerivative::computeQpJacobian()
+{
+  return _time_coefficient * TimeDerivative::computeQpJacobian();
+}
+```
+
+
+---
+background-image:url(https://mooseframework.org/static/media/uploads/images/backgrounds/inl_white_slide.png)
+name:summary-of-input-file-syntax-changes-for-transient-analysis-0
+
+# Summary of input file syntax changes for transient analysis
+
+* Add appropriate `TimeDerivative` Kernels.
+* Switch your executioner type to "Transient"
+* Add a few typical parameters to the Executioner block
+    - `Real time`:  The start time for the simulation.
+    - `Real dt`: The initial time step size.
+    - `string scheme`: Time integrator scheme
+        - `&#39;crank-nicolson&#39;`
+        - `&#39;backward-euler&#39;` -- default if you do not specify the scheme
+        - `&#39;bdf2&#39;`
+
+---
+background-image:url(https://mooseframework.org/static/media/uploads/images/backgrounds/inl_white_slide.png)
+name:convergence-rates-0
+
+# Convergence Rates
+
+* Consider the test problem:
+`$$ 
+\begin{array}{rl}
+\frac{\partial u}{\partial t} - \nabla^2 u &= f 
+\\
+u(t=0)&= u_0
+\\
+\left. u \right|_{\partial \Omega} &= u_D
+\end{array}
+ $$`
+for `$ t=(0,T] $`, and `$ \Omega=(-1,1)^2 $`
+
+* `$ f $` is chosen so the exact solution is given by `$ u = t^3 (x^2 + y^2) $`
+* `$ u_0 $` and `$ u_D $` are the initial and Dirichlet boundary conditions corresponding to this exact solution.
+
+---
+background-image:url(https://mooseframework.org/static/media/uploads/images/backgrounds/inl_white_slide.png)
+name:convergence-rates-1
+# Convergence Rates (cont.)
+
+
+.left-50[
+
+
+<div style="text-align:center;">
+<figure style="float:left">
+  <a href="http://www.mooseframework.org/static/media/wiki/images/28/df4727e5b0f2adf45e21fb6fa7a192b1/implicit_plot.png">
+    <img src="http://www.mooseframework.org/static/media/wiki/images/28/df4727e5b0f2adf45e21fb6fa7a192b1/implicit_plot.png" style="width:400px;"/>
+  </a>
+</figure>
+</div>]
+
+.right-50[
+
+
+<div style="text-align:center;">
+<figure style="float:left">
+  <a href="http://www.mooseframework.org/static/media/wiki/images/28/2f196e366bd065973611cd6cab5b27df/explicit_plot.png">
+    <img src="http://www.mooseframework.org/static/media/wiki/images/28/2f196e366bd065973611cd6cab5b27df/explicit_plot.png" style="width:400px;"/>
+  </a>
+</figure>
+</div>]
+
+---
+background-image:url(https://mooseframework.org/static/media/uploads/images/backgrounds/inl_white_slide.png)
+name:example-6-0
+
+# Example 6
+
+Look at [Example 6](http://mooseframework.org/wiki/MooseExamples/Example_06/)
+
+---
+background-image:url(https://mooseframework.org/static/media/uploads/images/backgrounds/inl_white_slide.png)
+name:eigenvalue-executioner-0
+
+# Eigenvalue Executioner
+
+[EigenExecutioner](EigenExecutioner)
+    </textarea>
+    <script src="http://gnab.github.io/remark/downloads/remark-latest.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript">
+      var slideshow = remark.create({
+
+        // Syntax highlighting
+        highlightStyle: 'tomorrow',
+
+        // Navigation options
+        navigation: {
+          // Enable or disable navigating using scroll
+          // Default: true
+          // Alternatives: false
+          scroll: false,
+
+          // Enable or disable navigation using touch
+          // Default: true
+          // Alternatives: false
+          touch: true,
+
+          // Enable or disable navigation using click
+          // Default: false
+          // Alternatives: true
+          click: false
+          }
+      });
+
+      // Setup MathJax
+      MathJax.Hub.Config({
+          tex2jax: {
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+          inlineMath: [['$','$'], ['\\(','\\)']]
+          }
+      });
+      MathJax.Hub.Queue(function() {
+          $(MathJax.Hub.getAllJax()).map(function(index, elem) {
+              return(elem.SourceElement());
+          }).parent().addClass('has-jax');
+      });
+
+      MathJax.Hub.Configured();
+    </script>
+  </body>
+</html>

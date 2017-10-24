@@ -4,6 +4,9 @@
 #include "ModulesApp.h"
 #include "MooseSyntax.h"
 
+#include "ExampleCoefDiffusion.h"
+#include "ExampleConvection.h"
+
 template <>
 InputParameters
 validParams<ragusa_classApp>()
@@ -38,8 +41,10 @@ ragusa_classApp::registerApps()
 }
 
 void
-ragusa_classApp::registerObjectDepends(Factory & /*factory*/)
+ragusa_classApp::registerObjectDepends(Factory & factory)
 {
+  registerKernel(ExampleCoefDiffusion);
+  registerKernel(ExampleConvection);
 }
 
 // External entry point for dynamic object registration
